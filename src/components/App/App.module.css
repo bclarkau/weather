@@ -1,11 +1,27 @@
 .container {
-  max-width: 960px;
+  position: relative;
   margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
 }
 
 .form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 80vw;
   font-size: 3rem;
+  padding: 3rem 0;
+  transition: top .2s ease;
+}
+
+.form.submitted {
+  top: 0;
+  transform: translate(-50%, 0);
 }

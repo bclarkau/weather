@@ -1,4 +1,5 @@
 import React from 'react'
+import cn from 'classnames'
 
 import LocationSelect from '../LocationSelect'
 import Forecast from '../Forecast'
@@ -11,9 +12,9 @@ const App: React.FC = () => {
   const [location, setLocation] = React.useState<Location | null>(null)
 
   return <div className={styles.container}>
-    <div className={styles.form}>
+    <div className={cn(styles.form, { [styles.submitted] : !!location })}>
       <span>What's the weather in</span>
-      <LocationSelect onSelect={(value: Location) => setLocation(value)} />
+      <LocationSelect onSelect={(value: Location | null) => setLocation(value)} />
       <span>?</span>
     </div>
     <Forecast location={location} />

@@ -24,7 +24,7 @@ const Forecast: React.FC<ForecastProps> = ({ location }) => {
     })()
   }, [location])
 
-  return <div className={cn(styles.forecast, { [styles.hidden] : !location })}>
+  return <div className={cn(styles.forecast, { [styles.active] : location })}>
     FORECAST HERE
     {location && <div>
       FORECAST FOR 

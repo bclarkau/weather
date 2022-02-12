@@ -7,7 +7,7 @@ import styles from './LocationSelect.module.css'
 import Loading from '../Loading'
 
 type LocationSelectProps = {
-  onSelect: (value: Location) => void
+  onSelect: (value: Location | null) => void
 }
 
 const LocationSelect: React.FC<LocationSelectProps> = ({ onSelect }) => {
@@ -16,16 +16,6 @@ const LocationSelect: React.FC<LocationSelectProps> = ({ onSelect }) => {
   const [input, setInput] = React.useState('')
   const [locations, setLocations] = React.useState<Location[] | null>(null)
   const [loading, setLoading] = React.useState(false)
-
-  // const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-  //   e.preventDefault()
-
-  //   if (input.length > 0) {
-  //     const res = await getLocations(input)
-  //     console.log('locations', res)
-  //     setLocations(res)
-  //   }
-  // }
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.innerHTML)
@@ -38,9 +28,16 @@ const LocationSelect: React.FC<LocationSelectProps> = ({ onSelect }) => {
     }
   }
 
+  const handleSelect = (value: Location) => {
+    onSelect(value)
+    setInput(value.name)
+    setLocations(null)
+  }
+
   React.useEffect(() => {
     if(!input.length) {
       setLocations(null)
+      onSelect(null)
     }
     
     (async () => {
@@ -54,6 +51,7 @@ const LocationSelect: React.FC<LocationSelectProps> = ({ onSelect }) => {
   }, [input])
 
   return <div className={styles.wrapper}>
+
     <span 
       placeholder="City Name" 
       className={styles.input} 
@@ -62,16 +60,19 @@ const LocationSelect: React.FC<LocationSelectProps> = ({ onSelect }) => {
       contentEditable 
       dangerouslySetInnerHTML={{ __html: inputRef.current }}
     />
+
     <div className={styles.loading}>
       <Loading active={loading} />
     </div>
+
     <ul className={cn(styles.chips, { [styles.active] : !!locations?.length })}>
       {locations?.map(location => <li key={location.id}>
-        <button className={styles.chip} onClick={() => onSelect(location)}>
+        <button className={styles.chip} onClick={() => handleSelect(location)}>
           {location.name}, {location.country}
         </button>
       </li>)}
     </ul>
+
   </div>
 }
 
