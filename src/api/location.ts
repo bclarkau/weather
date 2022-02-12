@@ -1,6 +1,9 @@
+import { debounce } from "ts-debounce"
+
 export type Location = {
 	id: number
 	name: string
+	country: string
 	coord: {
 		lat: number
 		lon: number
@@ -11,16 +14,24 @@ export type Location = {
 export const getLocations = async (query: string): Promise<Location[]> => {
 	const response = await fetch(`https://api.openweathermap.org/data/2.5/find?q=${query}&type=like&appid=${process.env.REACT_APP_OWM_API_KEY}`)
 	const data = await response.json()
-	return data.list
+	return mapLocations(data.list)
 }
+
+// get list of locations after user has stopped typing for 500ms
+export const getDebouncedLocations = debounce(getLocations, 500)
 
 // get latitude/longitude using openweathermap.org geolocation api 
 export const getLatLng = async (city: string) : Promise<Location> => {
 	const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_OWM_API_KEY}`)
 	const data = await response.json()
-	return {
-		id: data.id,
-		name: data.name,
-		coord: data.coord
-	}
+	return mapLocation(data)
 }
+
+const mapLocation = (location: any): Location => ({
+	id: location.id,
+	name: location.name,
+	country: location.sys.country,
+	coord: location.coord
+})
+
+const mapLocations = (locations: any): Location[] => locations.map(mapLocation)

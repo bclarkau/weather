@@ -6,6 +6,7 @@ import { Location } from '../../api/location'
 const testLocation: Location = {
 	id: 2147714,
 	name: 'Sydney',
+	country: 'AU',
 	coord: {
 		lat: -33.8679,
 		lon: 151.2073

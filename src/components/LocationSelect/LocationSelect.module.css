@@ -1,4 +1,66 @@
-.container {
-  max-width: 960px;
-  margin: 0 auto;
+.wrapper {
+  display: inline-block;
+  position: relative;
+}
+
+.input {
+  display: inline-block;
+  font-size: 3rem;
+  margin: 0 .8rem;
+  min-width: 220px;
+  max-width: 700px;
+  border-bottom: 3px solid lightseagreen;
+}
+
+.input[contenteditable=true]:empty:before{
+  content: attr(placeholder);
+  pointer-events: none;
+  display: block;
+  color: lightgrey;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1;
+  min-width: 220px;
+  max-width: 700px;
+  list-style: none;
+  padding: .8rem;
+  margin: 0;
+  font-size: 1rem;
+  opacity: 0;
+  transition: opacity .2s ease;
+}
+
+.chips.active {
+  opacity: 1;
+}
+
+.chip {
+  background-color: lightseagreen;
+  color: white;
+  border: 0;
+  border-radius: 5px;
+  padding: .5rem .8rem;
+  cursor: pointer;
+}
+
+.chip:hover {
+  background-color: teal;
+}
+
+.loading {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
 }

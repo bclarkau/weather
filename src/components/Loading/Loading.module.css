@@ -1,0 +1,9 @@
+.loading {
+  width: 40px;
+  opacity: 0;
+  transition: opacity .2s ease;
+}
+
+.loading.active {
+  opacity: 1;
+}
