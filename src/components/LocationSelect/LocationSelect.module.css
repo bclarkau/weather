@@ -11,6 +11,7 @@
   max-width: 700px;
   border-bottom: 3px solid lightseagreen;
   text-align-last: left;
+  color: teal;
 }
 
 .input[contenteditable=true]:empty:before{

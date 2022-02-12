@@ -3,6 +3,7 @@ import cn from 'classnames'
 
 import { Weather, WeatherForecast, getForecast } from '../../api/forecast'
 import { Location } from '../../api/location'
+import ForecastItem from './ForecastItem'
 
 import styles from './Forecast.module.css'
 
@@ -25,19 +26,15 @@ const Forecast: React.FC<ForecastProps> = ({ location }) => {
   }, [location])
 
   return <div className={cn(styles.forecast, { [styles.active] : location })}>
-    FORECAST HERE
-    {location && <div>
-      FORECAST FOR 
-      <span>{location.name}</span>
-      <span>{location.coord.lat}</span>
-      <span>{location.coord.lon}</span>
-    </div>}
-    {forecast?.map((day: Weather) => <div>
-      <div>{day.date}</div>
-      <div>{day.temp}</div>
-      <div>{day.weather.status}</div>
-      <div>{day.weather.description}</div>
-    </div>)}
+    <div className={styles.current}>
+      <h2>Currently</h2>
+    </div>
+    <div className={styles.upcoming}>
+      <h2>5 Day Forecast</h2>
+      <div className={styles.days}>
+        {forecast?.map((day: Weather) => <ForecastItem key={day.date} {...day} />)}
+      </div>
+    </div>
   </div>
 }
 
