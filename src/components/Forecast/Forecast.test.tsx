@@ -10,6 +10,17 @@ const testLocation: Location = {
 	coord: {
 		lat: -33.8679,
 		lon: 151.2073
+	},
+	weather: {
+		date: 1644707344,
+		temperature: {
+			now: 21,
+			feel: 20,
+			min: 18,
+			max: 24
+		},
+		icon: 'https://openweathermap.org/img/w/03d.png',
+		description: 'scattered clouds'
 	}
 }
 

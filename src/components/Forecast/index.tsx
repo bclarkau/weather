@@ -3,9 +3,11 @@ import cn from 'classnames'
 
 import { Weather, WeatherForecast, getForecast } from '../../api/forecast'
 import { Location } from '../../api/location'
-import ForecastItem from './ForecastItem'
+import CurrentWeather from './CurrentWeather'
+import FutureWeather from './FutureWeather'
 
 import styles from './Forecast.module.css'
+import { formatTime } from '../../helpers'
 
 type ForecastProps = {
   location: Location | null
@@ -26,13 +28,14 @@ const Forecast: React.FC<ForecastProps> = ({ location }) => {
   }, [location])
 
   return <div className={cn(styles.forecast, { [styles.active] : location })}>
-    <div className={styles.current}>
+    <div className={styles.column}>
       <h2>Currently</h2>
+      {location && <CurrentWeather {...location.weather} />}
     </div>
-    <div className={styles.upcoming}>
-      <h2>5 Day Forecast</h2>
+    <div className={styles.column}>
+      <h2>Forecast</h2>
       <div className={styles.days}>
-        {forecast?.map((day: Weather) => <ForecastItem key={day.date} {...day} />)}
+        {forecast?.map((day: Weather) => <FutureWeather key={day.date} {...day} />)}
       </div>
     </div>
   </div>

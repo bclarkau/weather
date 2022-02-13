@@ -1,0 +1,31 @@
+.date {
+  font-size: 1rem;
+  color: grey;
+}
+
+.weather {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.temperature {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 30px;
+  text-align: left;
+  color: grey;
+}
+
+.now .temp {
+  font-size: 3rem;
+  color: black;
+}
+
+.description {
+  text-transform: capitalize;
+}
+
+.other {
+  font-size: .8rem;
+}
