@@ -1,8 +1,7 @@
 .container {
   position: relative;
   margin: 0 auto;
-  width: 100vw;
-  height: 100vh;
+  max-width: 800px;
 }
 
 .form {
@@ -12,7 +11,7 @@
   z-index: 2;
   transform: translate(-50%, -50%);
   text-align: center;
-  width: 80vw;
+  width: 800px;
   font-size: 3rem;
   padding: 3rem 0;
   transition: top .2s ease;
