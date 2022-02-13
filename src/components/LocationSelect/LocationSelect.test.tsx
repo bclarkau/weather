@@ -1,9 +1,14 @@
-import React from 'react'
 import { render, screen } from '@testing-library/react'
 
 import LocationSelect from '.'
 
-test('renders location select input field', () => {
-  const { container } = render(<LocationSelect onSelect={() => {}} />)
-  expect(container.getElementsByTagName('input').length).toBe(1)
+test('renders input span field', () => {
+  render(<LocationSelect onSelect={() => {}} />)
+  expect(screen.getByRole('textbox')).toBeInTheDocument()
 })
+
+test('ul is empty when no locations', () => {
+  render(<LocationSelect onSelect={() => {}} />)
+  expect(screen.queryByRole('list')).toBeEmptyDOMElement()
+})
+

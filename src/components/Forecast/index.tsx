@@ -30,12 +30,12 @@ const Forecast: React.FC<ForecastProps> = ({ location }) => {
   return <div className={cn(styles.forecast, { [styles.active] : location })}>
     <div className={styles.column}>
       <h2>Currently</h2>
-      {location && <CurrentWeather {...location.weather} />}
+      {forecast && <CurrentWeather {...forecast.current} />}
     </div>
     <div className={styles.column}>
       <h2>Forecast</h2>
       <div className={styles.days}>
-        {forecast?.map((day: Weather) => <FutureWeather key={day.date} {...day} />)}
+        {forecast?.forecast.map((day: Weather) => <FutureWeather key={day.date} {...day} />)}
       </div>
     </div>
   </div>

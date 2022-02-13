@@ -26,6 +26,15 @@
   text-transform: capitalize;
 }
 
-.other {
+.sun {
+  margin: 0;
   font-size: .8rem;
+}
+
+.sun dd {
+  margin-left: 0;
+}
+
+.sun dd + dt {
+  padding-top: 5px;
 }

@@ -21,6 +21,7 @@ const LocationSelect: React.FC<LocationSelectProps> = ({ onSelect }) => {
     setInput(e.target.innerHTML)
   }
 
+  // prevent enter key press from adding newline
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       e.stopPropagation()
@@ -28,12 +29,14 @@ const LocationSelect: React.FC<LocationSelectProps> = ({ onSelect }) => {
     }
   }
 
+  // on location select, set the input value
   const handleSelect = (value: Location) => {
     onSelect(value)
     setInput(value.name)
     setLocations(null)
   }
 
+  // fetch locations on input change
   React.useEffect(() => {
     if(!input.length) {
       setLocations(null)
@@ -53,6 +56,7 @@ const LocationSelect: React.FC<LocationSelectProps> = ({ onSelect }) => {
   return <div className={styles.wrapper}>
 
     <span 
+      role="textbox"
       placeholder="City Name" 
       className={styles.input} 
       onInput={handleInput}
