@@ -28,7 +28,6 @@ export const getForecast = async (location: Location): Promise<WeatherForecast> 
 
 export const mapForecast = (forecast: any): WeatherForecast => {
 	const days = forecast.daily.slice(1, 6) // next 5 days only
-	console.log({forecast})
 	return {
 		current: mapCurrent(forecast.current),
 		forecast: days.map(mapWeather)

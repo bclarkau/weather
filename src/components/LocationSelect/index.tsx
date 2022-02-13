@@ -51,7 +51,7 @@ const LocationSelect: React.FC<LocationSelectProps> = ({ onSelect }) => {
         setLoading(false)
       }
     })()
-  }, [input])
+  }, [input, onSelect])
 
   return <div className={styles.wrapper}>
 

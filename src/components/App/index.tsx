@@ -11,10 +11,12 @@ const App: React.FC = () => {
 
   const [location, setLocation] = React.useState<Location | null>(null)
 
+  const handleSelect = React.useCallback((value: Location | null) => setLocation(value), [setLocation])
+
   return <div className={styles.container}>
     <div className={cn(styles.form, { [styles.submitted] : !!location })}>
       <span>What's the weather in</span>
-      <LocationSelect onSelect={(value: Location | null) => setLocation(value)} />
+      <LocationSelect onSelect={handleSelect} />
       <span>?</span>
     </div>
     <Forecast location={location} />

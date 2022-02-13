@@ -20,7 +20,6 @@ const Forecast: React.FC<ForecastProps> = ({ location }) => {
     (async () => {
       if (location) {
         const res = await getForecast(location)
-        console.log('forecast', res)
         setForecast(res)
       }
     })()
