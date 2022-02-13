@@ -2,6 +2,8 @@
 
 A demo project using [Open Weather Map API](https://openweathermap.org/)
 
+[View Demo](https://weather-bclarkau.vercel.app/)
+
 ## Project setup
 
 1. Clone repository to your local machine
@@ -11,7 +13,6 @@ A demo project using [Open Weather Map API](https://openweathermap.org/)
 ```
 cp .env.example .env
 ```
-
 
 3. [Generate an Open Weather Map API key](https://openweathermap.org/appid) on their website and include it in your `.env` file - the app will not run without it.
 
