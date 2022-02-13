@@ -7,7 +7,6 @@ import CurrentWeather from './CurrentWeather'
 import FutureWeather from './FutureWeather'
 
 import styles from './Forecast.module.css'
-import { formatTime } from '../../helpers'
 
 type ForecastProps = {
   location: Location | null

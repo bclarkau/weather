@@ -1,7 +1,7 @@
 import React from 'react'
 import cn from 'classnames'
 
-import { Location, getLocations, getDebouncedLocations } from '../../api/location'
+import { Location, getDebouncedLocations } from '../../api/location'
 
 import styles from './LocationSelect.module.css'
 import Loading from '../Loading'
